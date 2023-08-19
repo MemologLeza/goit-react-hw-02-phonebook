@@ -14,8 +14,8 @@ class ContactList extends Component {
   };
 
   createContact = data => {
-    if (this.isDuplicate(data.title))
-      return alert(`${data.title} is already in contacts(( `);
+    if (this.isDuplicate(data.name))
+      return alert(`${data.name} is already in contacts(( `);
     const newContact = {
       ...data,
       id: nanoid(),
@@ -24,8 +24,8 @@ class ContactList extends Component {
       contacts: [newContact, ...prev.contacts],
     }));
   };
-  isDuplicate = title =>
-    this.state.contacts.find(contact => contact.title === title);
+  isDuplicate = name =>
+    this.state.contacts.find(contact => contact.name === name);
   handleDelete = id => {
     this.setState(prev => ({
       contacts: prev.contacts.filter(contact => contact.id !== id),
